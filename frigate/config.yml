@@ -1,0 +1,44 @@
+mqtt:
+  host: '192.168.88.152'
+  user: 'mqttuser'
+  password: 'mqttpassword'
+
+detectors:
+  rknn:
+    type: rknn
+    device: /dev/rknpu
+    num_cores: 3
+    
+model:
+  model_type: yolonas
+  path: /models/rk_yolo_nas_m_coco-320x320-rk3588-v2.0.0-1.rknn
+
+  width: 320
+  height: 320
+  input_pixel_format: bgr
+  input_tensor: nhwc      #Default frigate-rk model
+
+  labelmap_path: /labelmap/coco-80.txt
+
+ffmpeg:
+  hwaccel_args:
+    - -hwaccel
+    - drm
+    - -hwaccel_device
+    - /dev/dri/renderD128
+    - -hwaccel_output_format
+    - dmabuf
+
+cameras:
+  cam1:
+    ffmpeg:
+      inputs:
+        - path: rtsp://admin:password@192.168.10.28:554/12
+          roles:
+            - detect
+            - rtmp
+    detect:
+      width: 640
+      height: 320
+      fps: 5
+version: 0.15-1

@@ -1,0 +1,29 @@
+services:
+  frigate:
+    container_name: frigate
+    privileged: true
+    restart: unless-stopped
+    image: ghcr.io/blakeblackshear/frigate:stable-rk
+    shm_size: '512mb'
+    devices:
+      - /dev/dri:/dev/dri              # Hardware video decoding (rkmpp)
+      - /dev/bus/usb:/dev/bus/usb      # USB devices (e.g., Coral TPU if used)
+      - /dev/rknpu:/dev/rknpu          # RKNN NPU device
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/ubuntu/frigate/config.yml:/config/config.yml
+      - /home/ubuntu/frigate/media/clips:/media/frigate/clips
+      - /home/ubuntu/frigate/media/recordings:/media/frigate/recordings
+      - /home/ubuntu/frigate/models:/models
+      - /home/ubuntu/frigate/labelmap:/labelmap
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 100000000
+    ports:
+      - '5000:5000'     # Web UI
+      - '8554:8554'     # RTSP streams (optional)
+      - '1935:1935'     # RTMP (optional)
+    environment:
+      FRIGATE_RTSP_PASSWORD: "yourpassword"
+      FRIGATE_ACCEL: "rknn" 

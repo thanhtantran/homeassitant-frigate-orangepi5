@@ -43,7 +43,10 @@ ubuntu@ubuntu:~/frigate$ cat /sys/class/drm/card1/dev
  Executing docker install script, commit: 7cae5f8b0decc17d6571f9f52eb840fbc13b2737
  <...>
 ```
-It will install automatically docker, add your user to docker group `sudo usermod -aG docker $USER`. Logout and login again
+It will install automatically docker.
+
+## 2. Add your user to docker group `sudo usermod -aG docker $USER`. Logout and login again
+Check docker running by `docker ps`
 
 ## 3. Pull the images
 Pre pull the images

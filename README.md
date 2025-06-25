@@ -45,7 +45,12 @@ ubuntu@ubuntu:~/frigate$ cat /sys/class/drm/card1/dev
 ```
 It will install automatically docker.
 
-## 2. Add your user to docker group `sudo usermod -aG docker $USER`. Logout and login again
+## 2. Add your user to docker group
+Run 
+```
+sudo usermod -aG docker $USER
+```
+then Logout and login again
 Check docker running by `docker ps`
 
 ## 3. Pull the images

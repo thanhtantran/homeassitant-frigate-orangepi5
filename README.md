@@ -1,3 +1,5 @@
+[vn Xem bản tiếng Việt](README-VIE.md)
+
 # Homeassistant and Frigate run on Orange Pi 5 via docker
 
 Frigate run on FFMPEG, so you need RKMMP installed on your Orange Pi 5 (or any version of 5 using RK3588)

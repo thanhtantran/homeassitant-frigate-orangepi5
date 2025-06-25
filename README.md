@@ -58,6 +58,7 @@ Pre pull the images
 ```
 docker pull eclipse-mosquitto
 docker pull ghcr.io/home-assistant/home-assistant:stable
+docker pull ghcr.io/blakeblackshear/frigate:stable-rk
 ```
 
 ### 4. Clone the github
@@ -103,5 +104,7 @@ docker compose up -d
 ```
 11. Go to Home Assistant and config the MQTT, listen to frigate topic and you will have Frigate connected to Home Assistant. More installation with Frigate camera, Frigate card you can see my video here
 
-https://www.youtube.com/watch?v=3ERqOcUjRTs
+[![🎬 Hướng dẫn cài đặt Home Assistant + MQTT + Frigate trên Orange Pi 5](http://img.youtube.com/vi/3ERqOcUjRTs/0.jpg)](http://www.youtube.com/watch?v=3ERqOcUjRTs)
+
+If you have any problems, ask on [Orange Pi Vietnam Forum](https://forum.orangepi.vn/)
 
